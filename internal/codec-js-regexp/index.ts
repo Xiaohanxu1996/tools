@@ -402,18 +402,6 @@ const regExpParser = createParser<RegExpParserTypes>({
 							);
 						}
 
-						if (isOct(backReference)) {
-							const octal = parseInt(backReference, 8);
-							return parser.finishComplexToken(
-								"Character",
-								{
-									value: String.fromCharCode(octal),
-									escaped: true,
-								},
-								referenceEnd,
-							);
-						}
-
 						// back reference allowed are 1 - 99
 						if (referenceValue >= 1 && referenceValue <= 99) {
 							return parser.finishComplexToken(
